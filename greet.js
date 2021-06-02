@@ -54,7 +54,6 @@ function greet() {
             errorM.innerHTML = "";
         }, 3000);
         return;
-
     }
 
     else {
@@ -77,6 +76,9 @@ function greet() {
     }
 
 }
+
+greetBtnElem.addEventListener('click', greet)
+
 
 function reset() {
     localStorage.clear()

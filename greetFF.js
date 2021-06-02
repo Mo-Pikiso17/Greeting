@@ -7,7 +7,7 @@ function greeting(exitingNames) {
         var name =str.charAt(0).toUpperCase() + str.slice(1);
 
         if (!oldNames.includes(name)) {
-            oldNames.push(names);
+            oldNames.push(name);
     
         }
     }
