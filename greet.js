@@ -42,6 +42,8 @@ function greet() {
     var language = document.querySelector("input[name='languageBtn']:checked");
     var name = textBoxElem.value;
 
+    language.checked = false;
+
     // var radioBtn = language.value;
 
     var errors = greetInsta.conditions(language, name)
