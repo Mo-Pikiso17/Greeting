@@ -1,59 +1,68 @@
 
-function greeting() {
-    var listOfNames = [];
-    var count = 0;
+function greeting(exitingNames) {
+    var oldNames = [] || exitingNames;
 
+    function pushNames (name){
+        var str = (textBoxElem.value).toLowerCase();                        
+        var name =str.charAt(0).toUpperCase() + str.slice(1);
 
-    function greets(language, gama) {
-       
-            if (language === "English") {
-             return "Hello, " + gama
-            }
+        if (!oldNames.includes(name)) {
+            oldNames.push(names);
     
-            if (language === "isiXhosa") {
-                return "Molo, " + gama
-               }
-    
-               if (language === "Swahili") {
-                return "Jambo, " + gama
-               }
-       
+        }
     }
 
 
-    function conditions(){    
-        if(language == null && gama === " "){
+    function getNames(){
+        return oldNames;
+    }
+
+    function getCount(){
+        return oldNames.length;
+    }
+
+
+    function greets(radioBtn, name) {
+
+        var str = (textBoxElem.value).toLowerCase();
+        var name =str.charAt(0).toUpperCase() + str.slice(1);
+       
+        if (radioBtn === "English") {
+        return "Hello, " + name;
+        }
+
+        if (radioBtn === "IsiXhosa") {
+        return "Molo, " + name;
+        }
+
+        if (radioBtn === "Swahili") {
+            
+            return "Jambo, " + name;
+        }
+       
+    }
+
+    function conditions(radioBtn, name){  
+
+        if(!radioBtn && name === ""){
             return "Enter name and select a language!";
         }
     
-        if(language){
-            if(gama === " ")
+        if (radioBtn && name === "") {
             return "Please enter a name!";
+                
         }
     
-        if(gama !== " "){
-           return "Please select a language!";
-        }
-    }
-
-    function restCount(){
-        count = 0;
-        nameCounterElem.innerHTML = count;
-        messageElem.innerHTML = "";
-    }
-
-    function nameGreeted(){
-        if (namesGreeted[gama] === undefined){
-            count++;
-            namesGreeted[gama] = 0;
-            // nameCounterElem.innerHTML = count;    
+        if (!radioBtn && name !== "") {
+            return "Please select a language!"; 
         }
     }
 
     return {
         greets,
+        pushNames,
+        getNames,
         conditions,
-        restCount,
-        nameGreeted
+        getCount,
     }
 }
