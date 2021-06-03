@@ -1,17 +1,20 @@
 
 function greeting(exitingNames) {
+
+    var letters = /^[A-Za-z]+$/;
+
+
     var oldNames = [] || exitingNames;
 
-    function pushNames (name){
-        var str = (textBoxElem.value).toLowerCase();                        
-        var name =str.charAt(0).toUpperCase() + str.slice(1);
+    function pushNames (names){
+        var str = names.toLowerCase();                        
+        var name = str.charAt(0).toUpperCase() + str.slice(1);
 
         if (!oldNames.includes(name)) {
             oldNames.push(name);
     
         }
     }
-
 
     function getNames(){
         return oldNames;
@@ -21,11 +24,11 @@ function greeting(exitingNames) {
         return oldNames.length;
     }
 
+    function greets(radioBtn, names) {
 
-    function greets(radioBtn, name) {
+        var str = names.toLowerCase();                     
+        var name = str.charAt(0).toUpperCase() + str.slice(1);
 
-        var str = (textBoxElem.value).toLowerCase();
-        var name =str.charAt(0).toUpperCase() + str.slice(1);
        
         if (radioBtn === "English") {
         return "Hello, " + name;
@@ -42,19 +45,29 @@ function greeting(exitingNames) {
        
     }
 
-    function conditions(radioBtn, name){  
+    function conditions(radioBtn, names){  
 
-        if(!radioBtn && name === ""){
+        // var str = names.toLowerCase(); 
+        // var name = str.charAt(0).toUpperCase() + str.slice(1);
+
+
+        if(!radioBtn && names === ""){
             return "Enter name and select a language!";
         }
     
-        if (radioBtn && name === "") {
+        if (radioBtn && names === "") {
             return "Please enter a name!";
                 
         }
     
-        if (!radioBtn && name !== "") {
+        if (!radioBtn && names !== "") {
             return "Please select a language!"; 
+        }
+
+        if(!letters.test(names)){
+
+            return "Please enter a valid name. E.g Ndalo";
+
         }
     }
 

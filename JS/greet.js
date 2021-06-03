@@ -42,7 +42,7 @@ function greet() {
     var language = document.querySelector("input[name='languageBtn']:checked");
     var name = textBoxElem.value;
 
-    language.checked = false;
+    // language.checked = false;
 
     // var radioBtn = language.value;
 
@@ -65,14 +65,15 @@ function greet() {
 
             localStorage.setItem('names', JSON.stringify(greetInsta.getNames()))
             nameCounterElem.innerHTML = greetInsta.getCount();
+
         } else {
 
             errorM.innerHTML = "Please enter a valid name. E.g Ndalo";
 
-        setTimeout(function () {
-            errorM.innerHTML = "";
-        }, 3000);
-        return;
+            setTimeout(function () {
+                errorM.innerHTML = "";
+            }, 3000);
+            return;
 
         }
     }
@@ -83,8 +84,20 @@ greetBtnElem.addEventListener('click', greet)
 
 
 function reset() {
-    localStorage.clear()
-    location.reload()
+
+    setTimeout(function () {
+        location.reload()
+        localStorage.clear()
+    }, 2000);
+    
+
+    setTimeout(function () {
+        errorM.innerHTML = "The page has been successfully reloaded";
+    }, 1000);
+
+
+    
 }
+
 
 resetBtnElem.addEventListener('click', reset)
