@@ -16,6 +16,9 @@ var messageElem = document.querySelector('.displayMsg');
 //Display error message space below
 var errorM = document.querySelector('.erroMsg');
 
+//Display after browser has been cleared
+var clearM = document.querySelector('.clearMsg');
+
 // Add reset button
 var resetBtnElem = document.querySelector('.resetBtn');
 
@@ -56,6 +59,8 @@ function greet() {
             errorM.innerHTML = "";
         }, 3000);
         return;
+
+        
     }
 
     else {
@@ -71,12 +76,22 @@ function greet() {
             errorM.innerHTML = "Please enter a valid name. E.g Ndalo";
 
             setTimeout(function () {
+                document.querySelector('.name').value = "";
+
                 errorM.innerHTML = "";
             }, 3000);
             return;
 
         }
+
+    language.checked = false;
+    document.querySelector('.name').value = ""; 
+
     }
+    // language.checked = false;
+    // document.querySelector('.name').value = "";
+
+
 
 }
 
@@ -85,6 +100,8 @@ greetBtnElem.addEventListener('click', greet)
 
 function reset() {
 
+    var language = document.querySelector("input[name='languageBtn']:checked");
+
     setTimeout(function () {
         location.reload()
         localStorage.clear()
@@ -92,10 +109,11 @@ function reset() {
     
 
     setTimeout(function () {
-        errorM.innerHTML = "The page has been successfully reloaded";
+        clearM.innerHTML = "The page has been successfully reloaded";
     }, 1000);
 
-
+    messageElem.innerHTML = "";
+    language.checked = false;
     
 }
 
