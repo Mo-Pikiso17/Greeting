@@ -88,13 +88,13 @@ input{
 .languages {
     display: inline-block;
     text-align: center;
-  }
-  .languages label {
+}
+.languages label {
     display: block;
     margin: 18px;
     font-size: 15px;
     padding-bottom: 20px;
-  }
+}
 
 .radios{
     padding-top:30px;
